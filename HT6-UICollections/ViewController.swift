@@ -15,16 +15,22 @@ class NotesViewController: UIViewController {
 
     @IBAction func addNewNote(_ sender: Any) {
         let newCellInfo = CellData.init(title: generateRandomString(8), description: generateRandomString(64), creationDate: getFormatterCurrentDate())
-        elements.append(newCellInfo)
+        elements[0].append(newCellInfo)
         updateTableContent()
     }
-
-    var elements = [CellData]()
+    
+    let sections = ["top", "bottom"]
+    var elements: [[CellData]] = [[
+        CellData.init(title: "Title1", description: "Description1", creationDate: "2018-01-01"),
+//        CellData.init(title: "Title2", description: "Description2", creationDate: "2018-01-02"),
+//        CellData.init(title: "Title3", description: "Description3", creationDate: "2018-01-03"),
+        CellData.init(title: "Title4", description: "Description4", creationDate: "2018-01-04")
+    ], []]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCustomCells()
-        elements = defaultElements()
+//        elements = defaultElements()
         updateTableContent()
     }
 
@@ -36,16 +42,24 @@ class NotesViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension NotesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return elements.count
+        return elements[section].count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NoteViewCell.reuseIdentifier, for: indexPath) as! NoteViewCell
-
-        cell.noteTitle.text = elements[indexPath.row].title
-        cell.noteDate.text = elements[indexPath.row].creationDate
-        cell.noteDescription.text = elements[indexPath.row].description
+        let elemsInSection = elements[indexPath.section]
+        cell.noteTitle.text = elemsInSection[indexPath.row].title
+        cell.noteDate.text = elemsInSection[indexPath.row].creationDate
+        cell.noteDescription.text = elemsInSection[indexPath.row].description
 
         return cell
     }
@@ -57,6 +71,56 @@ extension NotesViewController: UITableViewDataSource {
             updateTableContent()
         }
     }
+}
+
+extension NotesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPathForCell: IndexPath) {
+        print("didSelectRowAtIndexPath \(indexPathForCell)")
+    }
+    
+    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath indexPathForCell: NSIndexPath) {
+        print("moveRowAtIndexPath: \(indexPathForCell)")
+    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAtindexPath: IndexPath) {
+//
+//        if indexPath.section == 0 {
+//            var section = elements[0]
+//            let objectToMove = section[indexPath.row]
+//
+//            tableView.beginUpdates()
+//            var sectionToMove = elements[1]
+//            sectionToMove.append(objectToMove)
+//            section.remove(at: indexPath.row)
+//
+//            let newIndexPath = NSIndexPath(forRow: find(section, objectToMove)!, inSection: 1)
+//
+//            tableView.moveRowAtIndexPath(indexPath, toIndexPath: newIndexPath)
+//            tableView.endUpdates()
+//        }
+//    }
+    
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+//        print("didSelectRowAtIndexPath")
+//
+//        if indexPath.section == 0 {
+//            var section = elements[0]
+//            let objToMove = section[indexPath.row]
+//
+//            tableView.beginUpdates()
+//            elements[1].append(objToMove)
+//            section.remove(at: indexPath.row)
+//        } else {
+//            var section = elements[1]
+//            let objToMove = section[indexPath.row]
+//
+//            tableView.beginUpdates()
+//            elements[0].append(objToMove)
+//            section.remove(at: indexPath.row)
+//        }
+//
+    
 }
 
 // MARK: - HandleTableContent
