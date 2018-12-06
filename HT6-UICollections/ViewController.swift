@@ -49,6 +49,14 @@ extension NotesViewController: UITableViewDataSource {
 
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            elements.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            updateTableContent()
+        }
+    }
 }
 
 // MARK: - HandleTableContent
