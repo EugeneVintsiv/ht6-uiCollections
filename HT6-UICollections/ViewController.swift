@@ -77,28 +77,14 @@ extension NotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let objToMove = elements[0][indexPath.row]
-
-            tableView.beginUpdates()
             elements[1].append(objToMove)
             elements[0].remove(at: indexPath.row)
-
-            let index = elements[1].index(where: {$0 == objToMove})
-            let newIndexPath = IndexPath(row: index!, section: 1)
-            tableView.moveRow(at: indexPath, to: newIndexPath)
-
-            tableView.endUpdates()
+            updateTableContent()
         } else {
             let objToMove = elements[1][indexPath.row]
-
-            tableView.beginUpdates()
             elements[0].append(objToMove)
             elements[1].remove(at: indexPath.row)
-
-            let index = elements[0].index(where: {$0 == objToMove})
-            let newIndexPath = IndexPath(row: index!, section: 0)
-            tableView.moveRow(at: indexPath, to: newIndexPath)
-
-            tableView.endUpdates()
+            updateTableContent()
         }
     }
 }
