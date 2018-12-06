@@ -12,6 +12,9 @@
 		44D471D121B84F510027E4FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D471CF21B84F510027E4FC /* Main.storyboard */; };
 		44D471D321B84F520027E4FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44D471D221B84F520027E4FC /* Assets.xcassets */; };
 		44D471D621B84F520027E4FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44D471D421B84F520027E4FC /* LaunchScreen.storyboard */; };
+		44D471E721B8950B0027E4FC /* NoteViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D471E521B8950B0027E4FC /* NoteViewCell.swift */; };
+		44D471E821B8950B0027E4FC /* NoteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D471E621B8950B0027E4FC /* NoteViewCell.xib */; };
+		44D471EA21B896DF0027E4FC /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D471E921B896DF0027E4FC /* CellData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		44D471D221B84F520027E4FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44D471D521B84F520027E4FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44D471D721B84F520027E4FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44D471E521B8950B0027E4FC /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
+		44D471E621B8950B0027E4FC /* NoteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewCell.xib; sourceTree = "<group>"; };
+		44D471E921B896DF0027E4FC /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +63,12 @@
 				44D471CB21B84F510027E4FC /* AppDelegate.swift */,
 				44D471CD21B84F510027E4FC /* ViewController.swift */,
 				44D471CF21B84F510027E4FC /* Main.storyboard */,
+				44D471E521B8950B0027E4FC /* NoteViewCell.swift */,
+				44D471E621B8950B0027E4FC /* NoteViewCell.xib */,
 				44D471D221B84F520027E4FC /* Assets.xcassets */,
 				44D471D421B84F520027E4FC /* LaunchScreen.storyboard */,
 				44D471D721B84F520027E4FC /* Info.plist */,
+				44D471E921B896DF0027E4FC /* CellData.swift */,
 			);
 			path = "HT6-UICollections";
 			sourceTree = "<group>";
@@ -124,6 +133,7 @@
 			files = (
 				44D471D621B84F520027E4FC /* LaunchScreen.storyboard in Resources */,
 				44D471D321B84F520027E4FC /* Assets.xcassets in Resources */,
+				44D471E821B8950B0027E4FC /* NoteViewCell.xib in Resources */,
 				44D471D121B84F510027E4FC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				44D471CE21B84F510027E4FC /* ViewController.swift in Sources */,
+				44D471E721B8950B0027E4FC /* NoteViewCell.swift in Sources */,
 				44D471CC21B84F510027E4FC /* AppDelegate.swift in Sources */,
+				44D471EA21B896DF0027E4FC /* CellData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
