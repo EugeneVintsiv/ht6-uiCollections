@@ -16,7 +16,12 @@ class NotesViewController: UIViewController {
     @IBAction func addNewNote(_ sender: Any) {
         let newCellInfo = CellData.init(title: generateRandomString(8), description: generateRandomString(64), creationDate: getFormatterCurrentDate())
         elements[0].append(newCellInfo)
-        updateTableContent()
+
+        let index = elements[0].index(where: {$0 == newCellInfo})
+        let newIndexPath = IndexPath(row: index!, section: 0)
+        tableView.beginUpdates()
+        tableView.insertRows(at: [newIndexPath], with: .fade)
+        tableView.endUpdates()
     }
     
     let sections = ["top", "bottom"]
