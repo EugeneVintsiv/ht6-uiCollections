@@ -14,7 +14,6 @@ class NotesViewController: UIViewController {
     var elements = [CellData]()
     
     override func viewDidLoad() {
-        addButton.isHidden = true
         super.viewDidLoad()
         elements = [
             CellData.init(title: "Title1", description: "Description1", creationDate: "2018-01-01"),
@@ -29,6 +28,25 @@ class NotesViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: NoteViewCell.reuseIdentifier)
         tableView.reloadData()
     }
+    
+    @IBAction func addNewNote(_ sender: Any) {
+        let newCellInfo = CellData.init(title: generateRandomString(8), description: generateRandomString(64), creationDate: getFormatterCurrentDate())
+        elements.append(newCellInfo)
+        
+        print("new count: \(elements.count)")
+    }
+    
+    private func generateRandomString(_ length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0...length-1).map{ _ in letters.randomElement()! })
+    }
+    
+    private func getFormatterCurrentDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        return dateFormatter.string(from: Date())
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
