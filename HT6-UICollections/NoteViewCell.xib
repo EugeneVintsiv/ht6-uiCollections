@@ -12,36 +12,54 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellItem" rowHeight="184" id="KGk-i7-Jjw" customClass="NoteViewCell" customModule="HT6_UICollections" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="443" height="184"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellItem" rowHeight="316" id="KGk-i7-Jjw" customClass="NoteViewCell" customModule="HT6_UICollections" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="484" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="443" height="183.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="484" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-iT-CgR">
-                        <rect key="frame" x="20" y="11" width="97" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mep-iT-CgR">
+                        <rect key="frame" x="8" y="8" width="468" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="TeA-1L-3zb"/>
+                        </constraints>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFM-ps-hLE">
-                        <rect key="frame" x="20" y="81" width="36" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFM-ps-hLE">
+                        <rect key="frame" x="8" y="46" width="32.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="cPP-8C-b6d"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glA-By-fpZ">
-                        <rect key="frame" x="20" y="133" width="88" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" horizontalCompressionResistancePriority="250" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glA-By-fpZ">
+                        <rect key="frame" x="48.5" y="47" width="427.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="hRw-05-tY5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" red="1" green="0.94372567129999996" blue="0.19136246060000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="glA-By-fpZ" firstAttribute="leading" secondItem="QFM-ps-hLE" secondAttribute="trailing" constant="8" id="H8F-zh-dJh"/>
+                    <constraint firstItem="QFM-ps-hLE" firstAttribute="top" secondItem="Mep-iT-CgR" secondAttribute="bottom" constant="8" id="Pgn-Cj-Kj7"/>
+                    <constraint firstAttribute="trailing" secondItem="glA-By-fpZ" secondAttribute="trailing" constant="8" id="SX5-kO-qmu"/>
+                    <constraint firstAttribute="bottom" secondItem="QFM-ps-hLE" secondAttribute="bottom" constant="8" id="TdD-ai-4zC"/>
+                    <constraint firstItem="Mep-iT-CgR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="VCm-yJ-BpU"/>
+                    <constraint firstItem="glA-By-fpZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="47" id="XSA-pA-jlk"/>
+                    <constraint firstItem="Mep-iT-CgR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="eLO-BD-Ecz"/>
+                    <constraint firstAttribute="bottom" secondItem="glA-By-fpZ" secondAttribute="bottom" constant="8" id="iIA-e2-aHQ"/>
+                    <constraint firstAttribute="trailing" secondItem="Mep-iT-CgR" secondAttribute="trailing" constant="8" id="ty3-Sm-UNE"/>
+                    <constraint firstItem="QFM-ps-hLE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="uTN-3F-PEs"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
@@ -49,7 +67,7 @@
                 <outlet property="noteDescription" destination="glA-By-fpZ" id="RIU-4k-0J9"/>
                 <outlet property="noteTitle" destination="Mep-iT-CgR" id="TbE-bB-Yvq"/>
             </connections>
-            <point key="canvasLocation" x="164" y="-6.2968515742128943"/>
+            <point key="canvasLocation" x="16" y="56.671664167916049"/>
         </tableViewCell>
     </objects>
 </document>

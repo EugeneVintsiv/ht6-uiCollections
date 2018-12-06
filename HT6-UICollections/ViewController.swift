@@ -22,7 +22,6 @@ class NotesViewController: UIViewController {
             CellData.init(title: "Title4", description: "Description4", creationDate: "2018-01-04")
         ]
         
-        print(elements.count)
         let cellNib = UINib(nibName: "NoteViewCell", bundle: nil)
         print(cellNib)
         tableView.register(cellNib, forCellReuseIdentifier: NoteViewCell.reuseIdentifier)
@@ -32,6 +31,7 @@ class NotesViewController: UIViewController {
     @IBAction func addNewNote(_ sender: Any) {
         let newCellInfo = CellData.init(title: generateRandomString(8), description: generateRandomString(64), creationDate: getFormatterCurrentDate())
         elements.append(newCellInfo)
+        tableView.reloadData()
         
         print("new count: \(elements.count)")
     }
