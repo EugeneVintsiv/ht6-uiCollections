@@ -51,6 +51,7 @@ extension NotesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("numberOfRowsInSection \(section) cnt: \(elements[section].count)")
         return elements[section].count
     }
 
@@ -74,53 +75,34 @@ extension NotesViewController: UITableViewDataSource {
 }
 
 extension NotesViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPathForCell: IndexPath) {
-        print("didSelectRowAtIndexPath \(indexPathForCell)")
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let objToMove = elements[0][indexPath.row]
+
+            tableView.beginUpdates()
+            elements[1].append(objToMove)
+            elements[0].remove(at: indexPath.row)
+
+            let index = elements[1].index(where: {$0 == objToMove})
+            let newIndexPath = IndexPath(row: index!, section: 1)
+            tableView.moveRow(at: indexPath, to: newIndexPath)
+
+            tableView.endUpdates()
+        } else {
+            let objToMove = elements[1][indexPath.row]
+
+            tableView.beginUpdates()
+            elements[0].append(objToMove)
+            elements[1].remove(at: indexPath.row)
+
+            let index = elements[0].index(where: {$0 == objToMove})
+            let newIndexPath = IndexPath(row: index!, section: 0)
+            tableView.moveRow(at: indexPath, to: newIndexPath)
+
+            tableView.endUpdates()
+        }
     }
-    
-    func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath indexPathForCell: NSIndexPath) {
-        print("moveRowAtIndexPath: \(indexPathForCell)")
-    }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAtindexPath: IndexPath) {
-//
-//        if indexPath.section == 0 {
-//            var section = elements[0]
-//            let objectToMove = section[indexPath.row]
-//
-//            tableView.beginUpdates()
-//            var sectionToMove = elements[1]
-//            sectionToMove.append(objectToMove)
-//            section.remove(at: indexPath.row)
-//
-//            let newIndexPath = NSIndexPath(forRow: find(section, objectToMove)!, inSection: 1)
-//
-//            tableView.moveRowAtIndexPath(indexPath, toIndexPath: newIndexPath)
-//            tableView.endUpdates()
-//        }
-//    }
-    
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
-//        print("didSelectRowAtIndexPath")
-//
-//        if indexPath.section == 0 {
-//            var section = elements[0]
-//            let objToMove = section[indexPath.row]
-//
-//            tableView.beginUpdates()
-//            elements[1].append(objToMove)
-//            section.remove(at: indexPath.row)
-//        } else {
-//            var section = elements[1]
-//            let objToMove = section[indexPath.row]
-//
-//            tableView.beginUpdates()
-//            elements[0].append(objToMove)
-//            section.remove(at: indexPath.row)
-//        }
-//
-    
 }
 
 // MARK: - HandleTableContent
