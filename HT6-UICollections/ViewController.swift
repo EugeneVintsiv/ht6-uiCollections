@@ -17,11 +17,7 @@ class NotesViewController: UIViewController {
         let newCellInfo = CellData.init(title: generateRandomString(8), description: generateRandomString(64), creationDate: getFormatterCurrentDate())
         elements[0].append(newCellInfo)
 
-        let index = elements[0].index(where: {$0 == newCellInfo})
-        let newIndexPath = IndexPath(row: index!, section: 0)
-        tableView.beginUpdates()
-        tableView.insertRows(at: [newIndexPath], with: .fade)
-        tableView.endUpdates()
+        updateTableContent()
     }
     
     let sections = ["top", "bottom"]
@@ -35,7 +31,6 @@ class NotesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCustomCells()
-//        elements = defaultElements()
         updateTableContent()
     }
 
@@ -56,7 +51,6 @@ extension NotesViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowsInSection \(section) cnt: \(elements[section].count)")
         return elements[section].count
     }
 
@@ -72,8 +66,7 @@ extension NotesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            elements.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            elements[indexPath.section].remove(at: indexPath.row)
             updateTableContent()
         }
     }
@@ -118,7 +111,7 @@ extension NotesViewController {
     }
 
     private func updateCountLabel() {
-        countLabel.text = "Count: \(elements.count)"
+        countLabel.text = "Count: \(elements[0].count)"
     }
 
     private func generateRandomString(_ length: Int) -> String {
@@ -132,13 +125,5 @@ extension NotesViewController {
         return dateFormatter.string(from: Date())
     }
 
-    private func defaultElements() -> [CellData] {
-        return [
-            CellData.init(title: "Title1", description: "Description1", creationDate: "2018-01-01"),
-            CellData.init(title: "Title2", description: "Description2", creationDate: "2018-01-02"),
-            CellData.init(title: "Title3", description: "Description3", creationDate: "2018-01-03"),
-            CellData.init(title: "Title4", description: "Description4", creationDate: "2018-01-04")
-        ]
-    }
 }
 
