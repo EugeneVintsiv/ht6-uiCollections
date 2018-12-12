@@ -60,7 +60,10 @@ extension NotesViewController: UITableViewDataSource {
         cell.noteTitle.text = elemsInSection[indexPath.row].title
         cell.noteDate.text = elemsInSection[indexPath.row].creationDate
         cell.noteDescription.text = elemsInSection[indexPath.row].description
-
+        
+        cell.titleChangedCallback = { (data: String?) in
+            self.elements[indexPath.section][indexPath.row].title = data ?? ""
+        }
         return cell
     }
     
@@ -97,7 +100,7 @@ extension NotesViewController {
     }
 
     private func updateCountLabel() {
-        countLabel.text = "Count: \(elements[0].count)"
+        countLabel.text = "Count #1: \(elements[0].count) / Count #2: \(elements[1].count)"
     }
 
     private func generateRandomString(_ length: Int) -> String {

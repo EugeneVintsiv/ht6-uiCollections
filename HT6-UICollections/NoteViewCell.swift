@@ -15,5 +15,10 @@ class NoteViewCell: UITableViewCell {
     @IBOutlet weak var noteDate: UILabel!
     @IBOutlet weak var noteDescription: UILabel!
     
-
+    @IBAction func onTitleChanged(_ sender: UITextField) {
+        titleChangedCallback?(sender.text)
+    }
+    
+    var titleChangedCallback: ((String?) -> ())?
+    
 }

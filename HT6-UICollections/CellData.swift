@@ -9,7 +9,7 @@
 import Foundation
 
 struct CellData : Equatable {
-    let title: String
+    var title: String
     let description: String
     let creationDate: String
 }
