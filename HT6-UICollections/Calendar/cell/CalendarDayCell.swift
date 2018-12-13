@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CalendarDayNumber: UICollectionViewCell {
-    
+class CalendarDayNumberCell: UICollectionViewCell {
+    static let reuseIdentifier = "calendarDayNumberCellID"
+
     @IBOutlet weak var dayOfMonthLabel: UILabel!
 }

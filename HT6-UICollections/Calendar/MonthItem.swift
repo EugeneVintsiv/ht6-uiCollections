@@ -7,5 +7,5 @@ import Foundation
 
 struct MonthItem {
     let monthName: String
-    let daysCount: UInt
+    let daysCount: Int
 }

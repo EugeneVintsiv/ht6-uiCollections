@@ -9,7 +9,8 @@
 import UIKit
 
 class CalendarMonthHeader: UICollectionReusableView {
-    
+    static let reuseIdentifier = "CalendarMonthHeaderID"
+
     @IBOutlet weak var monthHeader: UILabel!
-    
+
 }

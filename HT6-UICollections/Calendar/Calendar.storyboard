@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--Calendar View Controller-->
         <scene sceneID="ZmE-OW-0Am">
             <objects>
-                <collectionViewController storyboardIdentifier="calendarView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fid-cz-VmE" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="calendarView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fid-cz-VmE" customClass="CalendarViewController" customModule="HT6_UICollections" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="M5f-eE-ypF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0yW-H0-ac9" customClass="CalendarDayNumber" customModule="HT6_UICollections" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="calendarDayNumberCellID" id="0yW-H0-ac9" customClass="CalendarDayNumberCell" customModule="HT6_UICollections" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -45,12 +45,11 @@
                                     <constraint firstItem="oNJ-dh-faJ" firstAttribute="centerX" secondItem="0yW-H0-ac9" secondAttribute="centerX" id="hFZ-CG-stA"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="dayOfMonth" destination="oNJ-dh-faJ" id="7kh-Zr-wbM"/>
                                     <outlet property="dayOfMonthLabel" destination="oNJ-dh-faJ" id="nha-x0-Rab"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5It-tw-nJ5" customClass="CalendarMonthHeader" customModule="HT6_UICollections" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarMonthHeaderID" id="5It-tw-nJ5" customClass="CalendarMonthHeader" customModule="HT6_UICollections" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>

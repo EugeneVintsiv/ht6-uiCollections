@@ -10,6 +10,8 @@ import UIKit
 
 class CalendarViewController: UICollectionViewController {
 
+    let cacheNums = Array<Int>(1...31)
+
     let months: [MonthItem] = [
         /*1*/ MonthItem(monthName: "January", daysCount: 31),
         /*2*/ MonthItem(monthName: "February", daysCount: 29),
@@ -27,5 +29,29 @@ class CalendarViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return months.count
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return months[section].daysCount
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarDayNumberCell.reuseIdentifier, for: indexPath) as! CalendarDayNumberCell
+        cell.dayOfMonthLabel.text = String(getDayNumber(indexPath.item))
+        return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CalendarMonthHeader.reuseIdentifier, for: indexPath) as! CalendarMonthHeader
+        headerView.monthHeader.text = months[indexPath.section].monthName
+        return headerView
+    }
+
+    private func getDayNumber(_ searchIndex: Int) -> Int {
+        return cacheNums[searchIndex]
     }
 }
