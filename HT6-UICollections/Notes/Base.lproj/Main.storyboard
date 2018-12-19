@@ -18,21 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPd-Tk-Q3J">
-                                <rect key="frame" x="16" y="20" width="46" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ww-1d-Otc">
-                                <rect key="frame" x="321" y="20" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add"/>
-                                <connections>
-                                    <action selector="addNewNote:" destination="BYZ-38-t0r" eventType="touchUpInside" id="grB-6F-xZi"/>
-                                </connections>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="2" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aWr-xT-jGX">
                                 <rect key="frame" x="16" y="64" width="343" height="591"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -45,6 +30,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="IRw-5B-rtF" kind="show" identifier="editNote" id="uaQ-aP-Yam"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -53,13 +41,6 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Zkz-zC-dMA"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3W-ke-RLX">
-                                <rect key="frame" x="115" y="20" width="146" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -72,14 +53,81 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addButton" destination="6Ww-1d-Otc" id="cbr-gD-uM8"/>
-                        <outlet property="countLabel" destination="m3W-ke-RLX" id="G8X-iA-ivH"/>
                         <outlet property="tableView" destination="aWr-xT-jGX" id="Lwh-ya-QXd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+        </scene>
+        <!--Edit Note View Controller-->
+        <scene sceneID="ND3-t6-JLK">
+            <objects>
+                <viewController storyboardIdentifier="EditNoteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IRw-5B-rtF" customClass="EditNoteViewController" customModule="HT6_UICollections" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ghW-oq-Xxs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Node Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="foG-Xw-fmn">
+                                <rect key="frame" x="8" y="72" width="359" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="u1C-8g-YlK"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Node Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYN-IM-LoW">
+                                <rect key="frame" x="8" y="110" width="359" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="P5S-cx-c92"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Kc-o4-ref">
+                                <rect key="frame" x="0.0" y="148" width="367" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="p5b-dO-bAD"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="566881570.12556899">
+                                    <!--2018-12-19 03:06:10 +0000-->
+                                </date>
+                            </datePicker>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QAV-pe-yb1">
+                                <rect key="frame" x="163" y="372" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="ibu-Rn-gmN"/>
+                                </constraints>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7Kc-o4-ref" firstAttribute="leading" secondItem="tAu-th-Vlj" secondAttribute="leading" id="A8y-ZU-G79"/>
+                            <constraint firstItem="fYN-IM-LoW" firstAttribute="leading" secondItem="tAu-th-Vlj" secondAttribute="leading" constant="8" id="D2u-hv-IZa"/>
+                            <constraint firstItem="fYN-IM-LoW" firstAttribute="top" secondItem="foG-Xw-fmn" secondAttribute="bottom" constant="8" id="RrD-Bc-p08"/>
+                            <constraint firstItem="QAV-pe-yb1" firstAttribute="top" secondItem="7Kc-o4-ref" secondAttribute="bottom" constant="8" id="d71-0Z-YU6"/>
+                            <constraint firstItem="foG-Xw-fmn" firstAttribute="top" secondItem="tAu-th-Vlj" secondAttribute="top" constant="8" id="fA4-Zx-2cs"/>
+                            <constraint firstItem="tAu-th-Vlj" firstAttribute="trailing" secondItem="fYN-IM-LoW" secondAttribute="trailing" constant="8" id="jbn-a5-I9V"/>
+                            <constraint firstItem="7Kc-o4-ref" firstAttribute="top" secondItem="fYN-IM-LoW" secondAttribute="bottom" constant="8" id="mbG-ue-g5P"/>
+                            <constraint firstItem="foG-Xw-fmn" firstAttribute="leading" secondItem="tAu-th-Vlj" secondAttribute="leading" constant="8" id="rbg-FM-f0e"/>
+                            <constraint firstItem="tAu-th-Vlj" firstAttribute="trailing" secondItem="foG-Xw-fmn" secondAttribute="trailing" constant="8" id="rvC-YR-mkm"/>
+                            <constraint firstItem="tAu-th-Vlj" firstAttribute="trailing" secondItem="7Kc-o4-ref" secondAttribute="trailing" constant="8" id="uIF-Hg-rnq"/>
+                            <constraint firstItem="QAV-pe-yb1" firstAttribute="centerX" secondItem="tAu-th-Vlj" secondAttribute="centerX" id="zJx-0f-hMt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tAu-th-Vlj"/>
+                    </view>
+                    <connections>
+                        <outlet property="noteCompletedSwitcher" destination="QAV-pe-yb1" id="6nW-im-Dkq"/>
+                        <outlet property="noteDatePicker" destination="7Kc-o4-ref" id="mG2-2A-qko"/>
+                        <outlet property="noteDescription" destination="fYN-IM-LoW" id="k1B-Lz-I5i"/>
+                        <outlet property="noteTitle" destination="foG-Xw-fmn" id="eCf-40-Mtz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FYt-VQ-fwh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="867"/>
         </scene>
         <!--Create Note View Controller-->
         <scene sceneID="a8e-n0-bdP">

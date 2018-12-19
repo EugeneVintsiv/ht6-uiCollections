@@ -21,6 +21,7 @@
 		44D471E821B8950B0027E4FC /* NoteViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44D471E621B8950B0027E4FC /* NoteViewCell.xib */; };
 		44D471EA21B896DF0027E4FC /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D471E921B896DF0027E4FC /* CellData.swift */; };
 		7C5F77ED0FC505F86845C00E /* MonthItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F7249AB5EC11951290319 /* MonthItem.swift */; };
+		7C5F7D09D8CB3BB5AE1C3BF3 /* EditNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F713CE2D61D684D4BEB72 /* EditNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		44D471E521B8950B0027E4FC /* NoteViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewCell.swift; sourceTree = "<group>"; };
 		44D471E621B8950B0027E4FC /* NoteViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteViewCell.xib; sourceTree = "<group>"; };
 		44D471E921B896DF0027E4FC /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		7C5F713CE2D61D684D4BEB72 /* EditNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditNoteViewController.swift; sourceTree = "<group>"; };
 		7C5F7249AB5EC11951290319 /* MonthItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,18 +55,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4430CDC321C9B1E800E981B9 /* New Group */ = {
+		4430CDC321C9B1E800E981B9 /* manageNoteViewController */ = {
 			isa = PBXGroup;
 			children = (
 				4430CDC421C9B1FF00E981B9 /* CreateNoteViewController.swift */,
+				7C5F713CE2D61D684D4BEB72 /* EditNoteViewController.swift */,
 			);
-			path = "New Group";
+			path = manageNoteViewController;
 			sourceTree = "<group>";
 		};
 		44A2310E21C1D8BE0083DEEB /* Notes */ = {
 			isa = PBXGroup;
 			children = (
-				4430CDC321C9B1E800E981B9 /* New Group */,
+				4430CDC321C9B1E800E981B9 /* manageNoteViewController */,
 				44D471CD21B84F510027E4FC /* ViewController.swift */,
 				44D471CF21B84F510027E4FC /* Main.storyboard */,
 				44D471E521B8950B0027E4FC /* NoteViewCell.swift */,
@@ -213,6 +216,7 @@
 				44A2311B21C1F43C0083DEEB /* CalendarViewController.swift in Sources */,
 				44D471EA21B896DF0027E4FC /* CellData.swift in Sources */,
 				7C5F77ED0FC505F86845C00E /* MonthItem.swift in Sources */,
+				7C5F7D09D8CB3BB5AE1C3BF3 /* EditNoteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,30 +9,20 @@
 import UIKit
 
 class NotesViewController: UIViewController {
-    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var countLabel: UILabel!
-
-    @IBAction func addNewNote(_ sender: Any) {
-        let newCellInfo = CellData.init(title: generateRandomString(8), description: generateRandomString(64), creationDate: getFormatterCurrentDate())
-        elements[0].append(newCellInfo)
-
-        updateTableContent()
-    }
 
     let sections = ["Incompleted", "completed"]
 
     var elements: [[CellData]] = [[
-        CellData.init(title: "Title1", description: "Description1", creationDate: "2018-01-01"),
-//        CellData.init(title: "Title2", description: "Description2", creationDate: "2018-01-02"),
-//        CellData.init(title: "Title3", description: "Description3", creationDate: "2018-01-03"),
-        CellData.init(title: "Title4", description: "Description4", creationDate: "2018-01-04")
+        CellData.init(title: "Note1", description: "Description 4 note 1", creationDate: "2018-01-01"),
+        CellData.init(title: "Note2", description: "Description 4 note 2", creationDate: "2018-01-04")
     ], []]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCustomCells()
         updateTableContent()
+        self.navigationItem.title = "Notes List"
     }
 
     private func registerCustomCells() {
@@ -76,19 +66,31 @@ extension NotesViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - edit note
 extension NotesViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            let objToMove = elements[0][indexPath.row]
-            elements[1].append(objToMove)
-            elements[0].remove(at: indexPath.row)
-            updateTableContent()
-        } else {
-            let objToMove = elements[1][indexPath.row]
-            elements[0].append(objToMove)
-            elements[1].remove(at: indexPath.row)
-            updateTableContent()
+        let currentStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let editController = currentStoryboard.instantiateViewController(withIdentifier: EditNoteViewController.viewIdentifier) as! EditNoteViewController
+        assignCellDataTo(indexPath: indexPath, editController: editController)
+        assignEndEditAction(editController: editController, indexPath: indexPath)
+        navigationController?.pushViewController(editController, animated: true)
+    }
+
+    private func assignCellDataTo(indexPath: IndexPath, editController: EditNoteViewController) {
+        let objToMove = indexPath.section == 0 ? elements[0][indexPath.row] : elements[1][indexPath.row]
+        editController.nodeData = objToMove
+    }
+
+    private func assignEndEditAction(editController: EditNoteViewController, indexPath: IndexPath) {
+        editController.onEndEditAction = { note in
+            var noteTmp = note //cuz need 'var' for swap
+            if indexPath.section == 0 {
+                swap(&self.elements[0][indexPath.row], &noteTmp)
+            } else {
+                swap(&self.elements[1][indexPath.row], &noteTmp)
+            }
+            self.updateTableContent()
         }
     }
 }
@@ -97,11 +99,6 @@ extension NotesViewController: UITableViewDelegate {
 extension NotesViewController {
     private func updateTableContent() {
         tableView.reloadData()
-        updateCountLabel()
-    }
-
-    private func updateCountLabel() {
-        countLabel.text = "Count #1: \(elements[0].count) / Count #2: \(elements[1].count)"
     }
 
     private func generateRandomString(_ length: Int) -> String {

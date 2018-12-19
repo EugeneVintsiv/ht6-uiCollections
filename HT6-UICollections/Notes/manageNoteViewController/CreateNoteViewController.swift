@@ -33,7 +33,7 @@ class CreateNoteViewController: UIViewController {
                 description: getTextOrDefault(noteDescription),
                 creationDate: dateFormatter.string(from: datePicker.date),
                 isCompleted: noteCompletedSwitcher.isOn)
-        onSaveAction?(cellData);
+        onSaveAction?(cellData)
         navigationController?.popViewController(animated: true)
     }
 
