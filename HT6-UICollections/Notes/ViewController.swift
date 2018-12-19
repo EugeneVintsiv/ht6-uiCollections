@@ -14,14 +14,20 @@ class NotesViewController: UIViewController {
     let sections = ["Incompleted", "completed"]
 
     var elements: [[CellData]] = [[
+        CellData.init(title: "Note2", description: "Description 4 note 2", creationDate: "2018-01-03"),
         CellData.init(title: "Note1", description: "Description 4 note 1", creationDate: "2018-01-01"),
         CellData.init(title: "Note2", description: "Description 4 note 2", creationDate: "2018-01-04")
     ], [
         CellData.init(title: "Note3", description: "Description 4 note 3", creationDate: "2018-10-01", isCompleted: true),
     ]]
 
+    private let dateFormat = "yyyy-MM-dd"
+    private var dateFormatter = DateFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        //should be before update table data
+        dateFormatter.dateFormat = dateFormat
         registerCustomCells()
         updateTableContent()
         self.navigationItem.title = "Notes List"
@@ -117,6 +123,8 @@ extension NotesViewController: UITableViewDelegate {
 // MARK: - HandleTableContent
 extension NotesViewController {
     private func updateTableContent() {
+        self.elements[0].sort(by: {self.dateFormatter.date(from: $0.modificationDate)! > self.dateFormatter.date(from: $1.modificationDate)!})
+        self.elements[1].sort(by: {self.dateFormatter.date(from: $0.modificationDate)! > self.dateFormatter.date(from: $1.modificationDate)!})
         tableView.reloadData()
     }
 

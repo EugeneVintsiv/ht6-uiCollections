@@ -32,7 +32,9 @@ class EditNoteViewController: UIViewController {
         let cellData = CellData(title: getTextOrDefault(noteTitle),
                 description: getTextOrDefault(noteDescription),
                 creationDate: dateFormatter.string(from: noteDatePicker.date),
-                isCompleted: noteCompletedSwitcher.isOn)
+                isCompleted: noteCompletedSwitcher.isOn,
+                modificationDate: dateFormatter.string(from: Date())
+                )
 
         onEndEditAction?(cellData)
         navigationController?.popViewController(animated: true)

@@ -12,6 +12,7 @@ struct CellData: Equatable {
     var title: String
     var description: String
     var creationDate: String
+    var modificationDate: String
     var isCompleted: Bool
 
     init() {
@@ -23,9 +24,14 @@ struct CellData: Equatable {
     }
 
     init(title: String, description: String, creationDate: String, isCompleted: Bool) {
+        self.init(title: title, description: description, creationDate: creationDate, isCompleted: isCompleted, modificationDate: creationDate)
+    }
+
+    init(title: String, description: String, creationDate: String, isCompleted: Bool, modificationDate: String) {
         self.title = title
         self.description = description
         self.creationDate = creationDate
+        self.modificationDate = modificationDate
         self.isCompleted = isCompleted
     }
 
