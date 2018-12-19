@@ -39,9 +39,10 @@ class EditNoteViewController: UIViewController {
     }
 
     private func setupViews() {
-        guard let title = nodeData?.title, let description = nodeData?.description,
-              let isCompleted = nodeData?.isCompleted,
-              let noteCreatedDate = nodeData?.creationDate
+        guard let title = nodeData?.title,
+              let description = nodeData?.description,
+              let noteCreatedDate = nodeData?.creationDate,
+              let isCompleted = nodeData?.isCompleted
                 else { return }
 
         noteTitle.text = title

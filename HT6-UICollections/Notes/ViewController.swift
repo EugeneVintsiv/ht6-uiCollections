@@ -16,7 +16,9 @@ class NotesViewController: UIViewController {
     var elements: [[CellData]] = [[
         CellData.init(title: "Note1", description: "Description 4 note 1", creationDate: "2018-01-01"),
         CellData.init(title: "Note2", description: "Description 4 note 2", creationDate: "2018-01-04")
-    ], []]
+    ], [
+        CellData.init(title: "Note3", description: "Description 4 note 3", creationDate: "2018-10-01", isCompleted: true),
+    ]]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,12 +85,29 @@ extension NotesViewController: UITableViewDelegate {
     }
 
     private func assignEndEditAction(editController: EditNoteViewController, indexPath: IndexPath) {
+        let objBeforeUpdate = indexPath.section == 0 ? elements[0][indexPath.row] : elements[1][indexPath.row]
+
         editController.onEndEditAction = { note in
-            var noteTmp = note //cuz need 'var' for swap
             if indexPath.section == 0 {
-                swap(&self.elements[0][indexPath.row], &noteTmp)
+                self.elements[0][indexPath.row] = note
             } else {
-                swap(&self.elements[1][indexPath.row], &noteTmp)
+                self.elements[1][indexPath.row] = note
+            }
+
+//            handle if flag changed
+            if (objBeforeUpdate.isCompleted != note.isCompleted) {
+                if (!objBeforeUpdate.isCompleted && note.isCompleted) {
+//                move to complete section
+                    let objToMove = self.elements[0][indexPath.row]
+                    self.elements[1].append(objToMove)
+                    self.elements[0].remove(at: indexPath.row)
+                }
+                if (objBeforeUpdate.isCompleted && !note.isCompleted) {
+//                move to incomplete section
+                    let objToMove = self.elements[1][indexPath.row]
+                    self.elements[0].append(objToMove)
+                    self.elements[1].remove(at: indexPath.row)
+                }
             }
             self.updateTableContent()
         }
@@ -126,7 +145,6 @@ extension NotesViewController {
     }
 
     func addNote(newNote note: CellData) {
-        print("Received: \(note)")
         if note.isCompleted {
             elements[1].append(note)
         } else {
