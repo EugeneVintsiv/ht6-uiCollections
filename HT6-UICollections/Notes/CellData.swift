@@ -8,8 +8,25 @@
 
 import Foundation
 
-struct CellData : Equatable {
+struct CellData: Equatable {
     var title: String
-    let description: String
-    let creationDate: String
+    var description: String
+    var creationDate: String
+    var isCompleted: Bool
+
+    init() {
+        self.init(title: "", description: "", creationDate: "", isCompleted: false)
+    }
+    
+    init(title: String, description: String, creationDate: String) {
+        self.init(title: title, description: description, creationDate: creationDate, isCompleted: false)
+    }
+
+    init(title: String, description: String, creationDate: String, isCompleted: Bool) {
+        self.title = title
+        self.description = description
+        self.creationDate = creationDate
+        self.isCompleted = isCompleted
+    }
+
 }

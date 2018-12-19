@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4430CDC521C9B1FF00E981B9 /* CreateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4430CDC421C9B1FF00E981B9 /* CreateNoteViewController.swift */; };
 		44A2311321C1D9720083DEEB /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44A2311221C1D9720083DEEB /* Calendar.storyboard */; };
 		44A2311721C1E2FC0083DEEB /* CalendarDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2311621C1E2FC0083DEEB /* CalendarDayCell.swift */; };
 		44A2311921C1EF3C0083DEEB /* CalendarMonthSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A2311821C1EF3C0083DEEB /* CalendarMonthSection.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4430CDC421C9B1FF00E981B9 /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
 		44A2311221C1D9720083DEEB /* Calendar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
 		44A2311621C1E2FC0083DEEB /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
 		44A2311821C1EF3C0083DEEB /* CalendarMonthSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarMonthSection.swift; sourceTree = "<group>"; };
@@ -51,9 +53,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4430CDC321C9B1E800E981B9 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				4430CDC421C9B1FF00E981B9 /* CreateNoteViewController.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		44A2310E21C1D8BE0083DEEB /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				4430CDC321C9B1E800E981B9 /* New Group */,
 				44D471CD21B84F510027E4FC /* ViewController.swift */,
 				44D471CF21B84F510027E4FC /* Main.storyboard */,
 				44D471E521B8950B0027E4FC /* NoteViewCell.swift */,
@@ -197,6 +208,7 @@
 				44D471CE21B84F510027E4FC /* ViewController.swift in Sources */,
 				44A2311721C1E2FC0083DEEB /* CalendarDayCell.swift in Sources */,
 				44D471E721B8950B0027E4FC /* NoteViewCell.swift in Sources */,
+				4430CDC521C9B1FF00E981B9 /* CreateNoteViewController.swift in Sources */,
 				44D471CC21B84F510027E4FC /* AppDelegate.swift in Sources */,
 				44A2311B21C1F43C0083DEEB /* CalendarViewController.swift in Sources */,
 				44D471EA21B896DF0027E4FC /* CellData.swift in Sources */,

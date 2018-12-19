@@ -19,8 +19,9 @@ class NotesViewController: UIViewController {
 
         updateTableContent()
     }
-    
-    let sections = ["top", "bottom"]
+
+    let sections = ["Incompleted", "completed"]
+
     var elements: [[CellData]] = [[
         CellData.init(title: "Title1", description: "Description1", creationDate: "2018-01-01"),
 //        CellData.init(title: "Title2", description: "Description2", creationDate: "2018-01-02"),
@@ -114,5 +115,27 @@ extension NotesViewController {
         return dateFormatter.string(from: Date())
     }
 
+}
+
+// MARK: - interaction with manage screens
+extension NotesViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "createNote" {
+            let targetScreen = segue.destination as! CreateNoteViewController
+            targetScreen.onSaveAction = { (note) -> () in
+                self.addNote(newNote: note)
+            }
+        }
+    }
+
+    func addNote(newNote note: CellData) {
+        print("Received: \(note)")
+        if note.isCompleted {
+            elements[1].append(note)
+        } else {
+            elements[0].append(note)
+        }
+        updateTableContent()
+    }
 }
 
