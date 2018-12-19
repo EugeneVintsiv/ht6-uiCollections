@@ -12,8 +12,11 @@ class CreateNoteViewController: UIViewController {
 
     @IBOutlet weak var noteTitle: UITextField!
     @IBOutlet weak var noteDescription: UITextField!
-    @IBOutlet weak var noteDate: UITextField!
     @IBOutlet weak var noteCompletedSwitcher: UISwitch!
+    @IBOutlet weak var datePicker: UIDatePicker!
+
+    private let dateFormat = "yyyy-MM-dd"
+    private var dateFormatter = DateFormatter()
 
     var onSaveAction: ((CellData) -> ())?
 
@@ -21,12 +24,14 @@ class CreateNoteViewController: UIViewController {
         let rightButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveNote))
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.title = "Create Note"
+
+        dateFormatter.dateFormat = dateFormat
     }
 
     @objc func saveNote() {
         let cellData = CellData(title: getTextOrDefault(noteTitle),
                 description: getTextOrDefault(noteDescription),
-                creationDate: getTextOrDefault(noteDate),
+                creationDate: dateFormatter.string(from: datePicker.date),
                 isCompleted: noteCompletedSwitcher.isOn)
         onSaveAction?(cellData);
         navigationController?.popViewController(animated: true)
